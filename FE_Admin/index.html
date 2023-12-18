@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<htm lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Codelearn</title>
+    <link rel="stylesheet" href="./assets/css/grid.css" />
+    <link rel="stylesheet" href="./assets/css/mainAdmin.css" />
+    <link rel="stylesheet" href="./assets/css/thong_ke.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+        rel=" stylesheet " />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="./assets/js/global.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js?fbclid=IwAR3F-3-KnLRJL8Z-RWCr7d5oNNeG5GUx1POwR9Ju6W_jrge6gLKxt71VCh8"></script>
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="grid d-flex-center">
+                <!-- Header logo -->
+                <div class="NavBar--logo">
+                    <a href="">
+                        <img class="NavBar--logoicon" src="./assets/img/logo/logo-f8.png" alt="">
+                    </a>
+                    <h4 class="NavBar--logoHeading">Ứng dụng F8</h4>
+                </div>
+                <!-- Header Actions -->
+                <div class="header_actions">
+                    <!-- User Menu -->
+                    <div aria-expanded="false" ng-click="handelClickActions_Avatar()" class="header_actions-avatar icon">
+                        <img class="avatar" src="https://firebasestorage.googleapis.com/v0/b/educationf8.appspot.com/o/img%2Fz4843413420220_8b1b3218ff7a0a79c14f76d0f68aebf3.jpg?alt=media&token=2592b398-1257-4dd5-916d-1635fb5dae3f" alt="" />
+                        <h3>Admin</h3>
+                    </div>
+                    <div aria-hidden="true" id="userMenu"
+                        class="header_userMenu userMenu-wrapper" style="display: none;">
+                        <div class="userMenu_user">
+                            <div class="userMenu_user-avatar">
+                                <img class="avatar" src="https://firebasestorage.googleapis.com/v0/b/educationf8.appspot.com/o/img%2Fz4843413420220_8b1b3218ff7a0a79c14f76d0f68aebf3.jpg?alt=media&token=2592b398-1257-4dd5-916d-1635fb5dae3f" alt="" />
+                            </div>
+                            <div class="userMenu_info">
+                                <span class="userMenu_info-name">Admin</span>
+                            </div>
+                        </div>
+                        <hr />
+                        <ul class="userMenu-list">
+                            <li class="userMenu_item">
+                                <a href="" class="userMenu_item-link"> Profile </a>
+                            </li>
+                            <hr />
+                            <li class="userMenu_item">
+                                <a href="" class="userMenu_item-link"> Add blog </a>
+                            </li>
+                            <li class="userMenu_item">
+                                <a href="" class="userMenu_item-link"> My blogs </a>
+                            </li>
+                            <hr />
+                            <li class="userMenu_item">
+                                <a href="" class="userMenu_item-link"> Bookmark </a>
+                            </li>
+                            <hr />
+                            <li class="userMenu_item">
+                                <a href="" class="userMenu_item-link"> Setting </a>
+                            </li>
+                            <li class="userMenu_item">
+                                <a href="../FE_User/login.html" class="userMenu_item-link"> Logout </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Container -->
+        <div class="container">
+            <!-- Sidebar -->
+            <div class="sideBar">
+                <div class="sideBar_wrapper fixed">
+                    <ul class="sideBar_list">
+                        <li class="sideBar_item">
+                            <a href="./index.html" title="Tổng quan" id="tongQuan" class="sideBar_item-link">
+                                <i class="fa-solid fa-house"></i>
+                                <span class="text sideBar_item-text">Tổng quan</span>
+                            </a>
+                        </li>
+        
+                        <li class="sideBar_item">
+                            <a href="./courseAdmin.html" id="course" class="sideBar_item-link">
+                                <i class="fa-solid fa-road"></i>
+                                <span class="text sideBar_item-text">Khoá học</span>
+                            </a>
+                        </li>
+        
+                        <li class="sideBar_item">
+                            <a href="./particpationAdmin.html" id="participation" class="sideBar_item-link">
+                                <i class="fa-solid fa-newspaper"></i>
+                                <span class="text sideBar_item-text">Đăng ký</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        
+            <!-- Content -->
+            <div id="content" class="content">
+                <div class="grid">
+                    <div class="title">
+                        <h3>Hoạt động hôm nay</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col l-4">
+                            <div class="padding-box">
+                                <div class="box" style="background-color: #9abc32">
+                                    <div class="box-left"><i class="fas fa-signal"></i></div>
+                                    <div class="box-right">Số học viên đăng ký<br /><span>0</span> học viên</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-4">
+                            <div class="padding-box">
+                                <div class="box" style="background-color: #9abc32">
+                                    <div class="box-left"><i class="fas fa-signal"></i></div>
+                                    <div class="box-right">Số khóa học được đăng ký<br /><span>0</span>khóa học</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-4">
+                            <div class="padding-box">
+                                <div class="box" style="background-color: #9abc32">
+                                    <div class="box-left"><i class="fas fa-signal"></i></div>
+                                    <div class="box-right">Doanh thu theo tháng<br /><span>0</span>đ</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="col l-4">
+                            <div class="padding-box">
+                                <div class="box2" style="border: 1px solid #6FB3E0;">
+                                    <div class="box2-top" style="border-bottom: 1px solid #6FB3E0;">
+                                        <i class="fas fa-signal"></i> Hoạt động
+                                    </div>
+                                    <div class="box2-bot">
+                                        <div class="box2-bot-left">Tiền bán khóa học</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Số khóa học đăng ký</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Số sản phẩm</div>
+                                        <div class="box2-bot-right">0</div>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-4">
+                            <div class="padding-box">
+                                <div class="box2" style="border: 1px solid #6FB3E0;">
+                                    <div class="box2-top" style="border-bottom: 1px solid #6FB3E0;">
+                                        <i class="fas fa-signal"></i> Hoạt động
+                                    </div>
+                                    <div class="box2-bot">
+                                        <div class="box2-bot-left">Tiền bán khóa học</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Số khóa học đăng ký</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Số sản phẩm</div>
+                                        <div class="box2-bot-right">0</div>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-4">
+                            <div class="padding-box">
+                                <div class="box2" style="border: 1px solid #6FB3E0;">
+                                    <div class="box2-top" style="border-bottom: 1px solid #6FB3E0;">
+                                        <i class="fas fa-signal"></i> Hoạt động
+                                    </div>
+                                    <div class="box2-bot">
+                                        <div class="box2-bot-left">Tiền bán khóa học</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Số khóa học đăng ký</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Số sản phẩm</div>
+                                        <div class="box2-bot-right">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+                <div style="margin-bottom: 20px" class="col-11 col-s-12 col-m-12 Details">
+                    <div class="col-12 col-s-12 col-m-12 overview Page">
+                        <div class="col-12 col-s-12 col-m-12 overview1">
+                            <div class="tabcontent"></div>
+                            <div class="chooseover">
+                                <label for="txt_over">Tổng quan về thống kê số người dùng tham gia hệ
+                                    thống</label>
+                                <select ng-model="valueDate" ng-change="renderChart()" id="txt_over"
+                                    style="outline: none; margin-top: 20px">
+                                    <option selected value="tuan">Theo tuần</option>
+                                    <option value="thang">Theo tháng</option>
+                                    <option value="nam">Theo năm</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-s-12 col-m-12 sales">
+                                <div id="chartContainerTuan" style="height: 400px; width: 60%; margin: auto"></div>
+                            </div>
+                            <div class="col-12 col-s-12 col-m-12 sales_week"></div>
+                            <div class="col-12 col-s-12 col-m-12 sales">
+                                <div id="chartContainerthang" style="height: 400px; width: 100%"></div>
+                            </div>
+                            <div class="col-12 col-s-12 col-m-12 sales_week"></div>
+                            <div class="col-12 col-s-12 col-m-12 sales">
+                                <div id="chartContainer" style="height: 400px; width: 100%"></div>
+                            </div>
+                            <div class="col-12 col-s-12 col-m-12 sales_week"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <!-- <footer class="footer">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="col l-3">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sapiente numquam
+                            facere. Obcaecati ad enim hic quidem atque quia distinctio omnis, iste sequi vero
+                            sapiente perferendis consectetur soluta, placeat adipisci.
+                        </h1>
+                    </div>
+                    <div class="col l-2">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quidem distinctio
+                            animi nobis culpa quibusdam assumenda incidunt veniam quae. Debitis velit sunt earum
+                            aliquam ipsam sint odio quisquam soluta obcaecati?
+                        </h1>
+                    </div>
+                    <div class="col l-2">
+                        <h1>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde veritatis mollitia
+                            dolorum nostrum consectetur sapiente quis, excepturi ullam tempora laboriosam dolores
+                            maiores exercitationem iusto pariatur repellat, fugit aspernatur minus reprehenderit!
+                        </h1>
+                    </div>
+                    <div class="col l-2">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a culpa autem doloribus
+                            obcaecati sequi nisi, ratione unde earum? Porro repellendus voluptatem perspiciatis
+                            nesciunt doloribus voluptatum quam omnis dolores molestias?
+                        </h1>
+                    </div>
+                    <div class="col l-3">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolores voluptatum dolorum
+                            atque illum officia provident consectetur facere voluptates, alias, cumque,
+                            reprehenderit nobis voluptate voluptatibus corrupti minima. Dolor, provident nulla?
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </footer> -->
+        <div class="footer">
+            <div class="footer_conten">
+                <div class="row footer_conten--top">
+                    <div class="col c-3">
+                        <div>
+                            <div class="NavBar--logo" style="display: flex;">
+                                <a href=""><img class="NavBar--logoicon" src="./assets/img/logo/logo-f8.png" alt=""></a>
+                                <h2 class="footer--titleH_logo">Học Lập Trình Để Đi Làm</h2>
+                            </div>
+                            <ul class="footer_wed--infor-list">
+                                <li>
+                                    <span>Điện thoại: </span>
+                                    <a href="">0246.329.1102</a>
+                                </li>
+                                <li>
+                                    <span>Email: </span>
+                                    <a href="">contact@fullstack.edu.vn</a>
+                                </li>
+                                <li>
+                                    <span>Địa chỉ: Số 26 Dương Đình Nghệ, Phường Yên Hòa, Quận Cầu Giấy, TP. Hà Nội</span>
+                                </li>
+                            </ul>
+                            <div>
+                                <a href="">
+                                    <img src="./assets/img/footer/DMCA_protected.png" alt="" style="margin-top: 20px;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col c-2">
+                        <div class="footer_center">
+                            <div>
+                                <h2 class="footer_heading">Về F8</h2>
+                                <ul class="footer_wed--conten-list">
+                                    <li>
+                                        <a href="">Giới thiệu</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Liên hệ</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Điều khoản</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Bảo mật</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Cơ hội việc làm</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col c-2">
+                        <div class="footer_center">
+                            <div>
+                                <h2 class="footer_heading">Sản phẩm</h2>
+                                <ul class="footer_wed--conten-list">
+                                    <li>
+                                        <a href="">Game Nester</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Game CSS Diner</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Game CSS Selectors</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Game Froggy</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Game Froggy Pro</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Game Scoops</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col c-2">
+                        <div class="footer_center">
+                            <div>
+                                <h2 class="footer_heading">Công cụ</h2>
+                                <ul class="footer_wed--conten-list">
+                                    <li>
+                                        <a href="">Tạo CV xin việc</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Rút gọn liên kết</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Clip-path maker</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Snippet generator</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Cảnh báo sờ tay lên mặt</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col c-3">
+                        <div class="footer_center">
+                            <div>
+                                <h2 class="footer_heading">CÔNG TY CỔ PHẦN CÔNG NGHỆ GIÁO DỤC F8</h2>
+                                <ul class="footer_wed--conten-list">
+                                    <li>
+                                        Mã số thuế: 0109922901
+                                    </li>
+                                    <li>
+                                        Ngày thành lập: 04/03/2022
+                                    </li>
+                                    <li>
+                                        Lĩnh vực: Công nghệ, giáo dục, lập trình. F8 xây dựng và phát triển những sản phẩm mang
+                                        lại giá trị cho cộng đồng.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row footer_conter--bot">
+                    <div class="col c-12">
+                        <div class="footer--bot_center">
+                            <div class="footer--bot_copyright">
+                                © 2018 - 2023 F8. Nền tảng học lập trình hàng đầu Việt Nam
+                            </div>
+                            <ul class="footer--bot_list_app--society">
+                                <li>
+                                    <a href="">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="fa-brands fa-square-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="fa-brands fa-tiktok"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/Header.js"></script>
+    <script src="./assets/js/Home.js"></script>
+</body>
+</htm>

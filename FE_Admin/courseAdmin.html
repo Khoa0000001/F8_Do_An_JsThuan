@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<htm lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Codelearn</title>
+        <link rel="stylesheet" href="./assets/css/grid.css" />
+        <link rel="stylesheet" href="./assets/css/mainAdmin.css" />
+        <link rel="stylesheet" href="./assets/css/thong_ke.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel=" stylesheet " />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+        <script src="./assets/js/global.js"></script>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js?fbclid=IwAR3F-3-KnLRJL8Z-RWCr7d5oNNeG5GUx1POwR9Ju6W_jrge6gLKxt71VCh8"></script>
+    </head>
+
+    <body>
+        <div class="app">
+            <!-- Header -->
+            <header class="header">
+                <div class="grid d-flex-center">
+                    <!-- Header logo -->
+                    <div class="NavBar--logo">
+                        <a href="">
+                            <img class="NavBar--logoicon" src="./assets/img/logo/logo-f8.png" alt="">
+                        </a>
+                        <h4 class="NavBar--logoHeading">Ứng dụng F8</h4>
+                    </div>
+                    <!-- Header Actions -->
+                    <div class="header_actions">
+                        <!-- User Menu -->
+                        <div aria-expanded="false" ng-click="handelClickActions_Avatar()"
+                            class="header_actions-avatar icon">
+                            <img class="avatar" src="https://firebasestorage.googleapis.com/v0/b/educationf8.appspot.com/o/img%2Fz4843413420220_8b1b3218ff7a0a79c14f76d0f68aebf3.jpg?alt=media&token=2592b398-1257-4dd5-916d-1635fb5dae3f" alt="" />
+                            <h3>Admin</h3>
+                        </div>
+                        <div aria-hidden="true" id="userMenu" class="header_userMenu userMenu-wrapper" style="display: none;">
+                            <div class="userMenu_user">
+                                <div class="userMenu_user-avatar">
+                                    <img class="avatar" src="https://firebasestorage.googleapis.com/v0/b/educationf8.appspot.com/o/img%2Fz4843413420220_8b1b3218ff7a0a79c14f76d0f68aebf3.jpg?alt=media&token=2592b398-1257-4dd5-916d-1635fb5dae3f" alt="" />
+                                </div>
+                                <div class="userMenu_info">
+                                    <span class="userMenu_info-name">Admin</span>
+                                </div>
+                            </div>
+                            <hr />
+                            <ul class="userMenu-list">
+                                <li class="userMenu_item">
+                                    <a href="" class="userMenu_item-link"> Profile </a>
+                                </li>
+                                <hr />
+                                <li class="userMenu_item">
+                                    <a href="" class="userMenu_item-link"> Add blog </a>
+                                </li>
+                                <li class="userMenu_item">
+                                    <a href="" class="userMenu_item-link"> My blogs </a>
+                                </li>
+                                <hr />
+                                <li class="userMenu_item">
+                                    <a href="" class="userMenu_item-link"> Bookmark </a>
+                                </li>
+                                <hr />
+                                <li class="userMenu_item">
+                                    <a href="" class="userMenu_item-link"> Setting </a>
+                                </li>
+                                <li class="userMenu_item">
+                                    <a href="../FE_User/login.html" class="userMenu_item-link"> Logout </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Container -->
+            <div class="container">
+                <!-- Sidebar -->
+                <div class="sideBar">
+                    <div class="sideBar_wrapper fixed">
+                        <ul class="sideBar_list">
+                            <li class="sideBar_item">
+                                <a href="./index.html" title="Tổng quan" id="tongQuan" class="sideBar_item-link">
+                                    <i class="fa-solid fa-house"></i>
+                                    <span class="text sideBar_item-text">Tổng quan</span>
+                                </a>
+                            </li>
+            
+                            <li class="sideBar_item">
+                                <a href="./courseAdmin.html" id="course" class="sideBar_item-link">
+                                    <i class="fa-solid fa-road"></i>
+                                    <span class="text sideBar_item-text">Khoá học</span>
+                                </a>
+                            </li>
+            
+                            <li class="sideBar_item">
+                                <a href="./particpationAdmin.html" id="participation" class="sideBar_item-link">
+                                    <i class="fa-solid fa-newspaper"></i>
+                                    <span class="text sideBar_item-text">Đăng ký</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Content -->
+            <div id="content" class="content">
+                <div class="grid">
+                    <div class="title">
+                        <h3>Thông tin khóa học</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col l-4">
+                            <div class="mt-4">
+                                <!-- Form nhap thong tin khoa hoc -->
+                                <form name="form-course" class="row needs-validation" method="POST">
+                                    <input type="hidden" class="form-control" id="courseId" name="courseId" value="0" />
+                                    <input type="hidden" class="form-control" id="CreateAtCourse" name="courseId" value="0" />
+            
+                                    <div class="col l-12 mt-12">
+                                        <label for="name" class="form-label">Tên khóa học</label>
+                                        <input type="text" ng-model="nameCourse" class="form-control" id="nameCourse"
+                                            name="nameCourse" />
+                                    </div>
+            
+                                    <div class="col l-12 mt-12">
+                                        <label for="description" class="form-label">Mô tả</label>
+                                        <textarea type="text" ng-model="DescriptionCourse" class="form-control" id="description"
+                                            name="description" style="resize: vertical"></textarea>
+                                    </div>
+            
+                                    <div class="col l-12 mt-12">
+                                        <label for="image" class="form-label">Ảnh</label>
+                                        <img src="https://firebasestorage.googleapis.com/v0/b/educationf8.appspot.com/o/img%2Fhinh-anh-bi-loi.jpeg?alt=media&token=75dd289b-7958-4f91-bc08-9bde26456180" class="form-control" id="img-DkCourse" alt=""
+                                            onclick="document.getElementById('getFile').click()" />
+                                        <input type="file" class="form-control" id="getFile" name="image" style="display: none" />
+                                    </div>
+            
+                                    <div class="col l-12 mt-12">
+                                        <label for="price" class="form-label">Giá</label>
+                                        <input type="text" ng-model="PriceCourse" class="form-control" id="price" name="price" />
+                                    </div>
+            
+                                    <input type="hidden" class="form-control" id="slug" name="slug" />
+            
+                                    <div class="col l-12 mt-12">
+                                        <label for="level" class="form-label">Thể loại</label>
+                                        <select class="form-select" id="categoryId" name="categoryId">
+                                            <option selected disabled value="0">
+                                                Choose...
+                                            </option>
+                                            <option ng-repeat="x in listCategorys" value="1">
+                                                Miễn phí
+                                            </option>
+                                            <option ng-repeat="x in listCategorys" value="2">
+                                                Mất phí
+                                            </option>
+                                        </select>
+                                    </div>
+            
+                                    <div class="col l-12 mt-12">
+                                        <button id="btn-luu-course" class="btn btn-primary" type="submit">
+                                            Lưu
+                                        </button>
+                                        <div s style="display: none; justify-content: space-between;">
+                                            <button id="btn-update-course" class="btn btn-primary"
+                                                type="submit">
+                                                Update
+                                            </button>
+                                            <button id="btn-huy-course" class="btn btn-primary">
+                                                Hủy
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            
+                        <div class="col l-8">
+                            <div class="mt-4">
+                                <div class="search">
+                                    <input type="text" class="search-type input-course" placeholder="Nhập mã, tên loại khóa học..."
+                                        ng-model="search_course" ng-change="ChangeSearchCourse()" />
+                                    <button class="btn btn-primary btn-search search-course" ng-click="clickSearchCourse()">
+                                        <i class="fas fas fa-search"></i> Tìm kiếm
+                                    </button>
+                                </div>
+            
+                                <!-- Form du lieu -->
+                                <form name="container-form" action="" style="min-height: 280px;">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" colspan="2">#</th>
+                                                <th scope="col">Tên khóa học</th>
+                                                <th scope="col">Giá</th>
+                                                <th scope="col" colspan="2">
+                                                    Thời gian tạo
+                                                </th>
+                                            </tr>
+                                        </thead>
+            
+                                        <tbody>
+                                            <tr class="course-item">
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" name="courseIds[]" />
+                                                    </div>
+                                                </td>
+                                                <th scope="row">
+                                                    1
+                                                </th>
+                                                <td class="name" >HTML CSS từ Zero đến Hero</td>
+                                                <td>10000</td>
+                                                <td>12-12-2023</td>
+                                                <td>
+                                                    <a class="btn btn-link btn-delete-course" data-id="">
+                                                        Xóa
+                                                    </a>
+                                                    <a class="btn btn-link btn-detail-course" data-id="">
+                                                        Chi tiết
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="course-item">
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" name="courseIds[]" />
+                                                    </div>
+                                                </td>
+                                                <th scope="row">
+                                                    2
+                                                </th>
+                                                <td class="name">HTML CSS từ Zero đến Hero</td>
+                                                <td>10000</td>
+                                                <td>12-12-2023</td>
+                                                <td>
+                                                    <a  class="btn btn-link btn-delete-course" data-id="">
+                                                        Xóa
+                                                    </a>
+                                                    <a  class="btn btn-link btn-detail-course" data-id="">
+                                                        Chi tiết
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="course-item">
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" name="courseIds[]" />
+                                                    </div>
+                                                </td>
+                                                <th scope="row">
+                                                    3
+                                                </th>
+                                                <td class="name">HTML CSS từ Zero đến Hero</td>
+                                                <td>10000</td>
+                                                <td>12-12-2023</td>
+                                                <td>
+                                                    <a  class="btn btn-link btn-delete-course" data-id="">
+                                                        Xóa
+                                                    </a>
+                                                    <a  class="btn btn-link btn-detail-course" data-id="">
+                                                        Chi tiết
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="course-item">
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" name="courseIds[]" />
+                                                    </div>
+                                                </td>
+                                                <th scope="row">
+                                                    4
+                                                </th>
+                                                <td class="name">HTML CSS từ Zero đến Hero</td>
+                                                <td>10000</td>
+                                                <td>12-12-2023</td>
+                                                <td>
+                                                    <a  class="btn btn-link btn-delete-course" data-id="">
+                                                        Xóa
+                                                    </a>
+                                                    <a  class="btn btn-link btn-detail-course" data-id="">
+                                                        Chi tiết
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+            
+                            <div class="padding-box">
+                                <div class="box-sum">
+                                    <div class="box-left">
+                                        Số lượng khoá học:
+                                        <span id="soluong">4</span>
+                                    </div>
+                                    <div class="box-right">
+                                        <button class="btn-primary">
+                                            <i class="fas fa-angle-left"></i>
+                                        </button>
+                                        <div class="navigation">
+                                            <button data-id="" class="btn-primary"> 1</button>
+                                        </div>
+                                        <button class="btn-primary">
+                                            <i class="fas fa-angle-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div style="display: none;" class="overlay"></div>
+                        <!-- List Lesson -->
+                        <div style="display: none;" class="lesson_wrapper">
+                            <input type="hidden" class="form-control" id="lesson-courseId" name="courseId" value="0" />
+                            <h1 class="lesson_heading">Danh sách bài học</h1>
+                            <div class="btn btn-primary btn-exit-form">X</div>
+            
+                            <div class="search">
+                                <input type="text" class="search-type input-lesson" placeholder="Nhập mã, tên bài học..." />
+                                <button class="btn btn-primary btn-search search-lesson">
+                                    <i class="fas fas fa-search"></i> Tìm kiếm
+                                </button>
+                            </div>
+            
+                            <!-- Bảng bài học -->
+                            <div class="lesson_list">
+                                <table class="table" style="min-height: 280px;">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" colspan="2">#</th>
+                                            <th scope="col">Tên bài học</th>
+                                            <th scope="col">Mô tả</th>
+                                            <th scope="col">Video ID</th>
+                                            <th scope="col" colspan="2">Thời gian tạo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="lesson-item real" data-update="false">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        name="lessonId" />
+                                                </div>
+                                            </td>
+            
+                                            <th scope="row">
+                                                1
+                                            </th>
+            
+                                            <td name="nameLesson">
+                                                <section style="white-space: nowrap;
+                                                                        max-width: 200px;
+                                                                        overflow: hidden;
+                                                                        text-overflow: ellipsis" contenteditable="false"
+                                                    name="nameLesson" class="view" data-src="{{x.name}}">
+                                                    Html cơ bản
+                                                </section>
+                                            </td>
+            
+                                            <td name="description">
+                                                <section style="white-space: nowrap;
+                                                                        max-width: 200px;
+                                                                        overflow: hidden;
+                                                                        text-overflow: ellipsis" contenteditable="false"
+                                                    name="description" class="view" data-src="">
+                                                </section>
+                                            </td>
+            
+                                            <td name="videoId">
+                                                <section style="white-space: nowrap;
+                                                                        max-width: 200px;
+                                                                        overflow: hidden;
+                                                                        text-overflow: ellipsis" contenteditable="false"
+                                                    name="videoId" class="view" data-src="">JHD523DS</section>
+                                            </td>
+            
+                                            <td name="createdAt" data-src="">12-12-2023</td>
+            
+                                            <td>
+                                                <button href="" class="btn btn-link btn-delete-lesson" data-id="">
+                                                    Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="lesson-item real" data-update="false">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="lessonId" />
+                                                </div>
+                                            </td>
+                                        
+                                            <th scope="row">
+                                                1
+                                            </th>
+                                        
+                                            <td name="nameLesson">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="nameLesson" class="view" data-src="{{x.name}}">
+                                                    Html cơ bản
+                                                </section>
+                                            </td>
+                                        
+                                            <td name="description">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="description" class="view" data-src="">
+                                                </section>
+                                            </td>
+                                        
+                                            <td name="videoId">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="videoId" class="view" data-src="">JHD523DS</section>
+                                            </td>
+                                        
+                                            <td name="createdAt" data-src="">12-12-2023</td>
+                                        
+                                            <td>
+                                                <button href="" class="btn btn-link btn-delete-lesson" data-id="">
+                                                    Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="lesson-item real" data-update="false">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="lessonId" />
+                                                </div>
+                                            </td>
+                                        
+                                            <th scope="row">
+                                                1
+                                            </th>
+                                        
+                                            <td name="nameLesson">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="nameLesson" class="view" data-src="{{x.name}}">
+                                                    Html cơ bản
+                                                </section>
+                                            </td>
+                                        
+                                            <td name="description">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="description" class="view" data-src="">
+                                                </section>
+                                            </td>
+                                        
+                                            <td name="videoId">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="videoId" class="view" data-src="">JHD523DS</section>
+                                            </td>
+                                        
+                                            <td name="createdAt" data-src="">12-12-2023</td>
+                                        
+                                            <td>
+                                                <button href="" class="btn btn-link btn-delete-lesson" data-id="">
+                                                    Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="lesson-item real" data-update="false">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="lessonId" />
+                                                </div>
+                                            </td>
+                                        
+                                            <th scope="row">
+                                                1
+                                            </th>
+                                        
+                                            <td name="nameLesson">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="nameLesson" class="view" data-src="{{x.name}}">
+                                                    Html cơ bản
+                                                </section>
+                                            </td>
+                                        
+                                            <td name="description">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="description" class="view" data-src="">
+                                                </section>
+                                            </td>
+                                        
+                                            <td name="videoId">
+                                                <section style="white-space: nowrap;
+                                                                                                                max-width: 200px;
+                                                                                                                overflow: hidden;
+                                                                                                                text-overflow: ellipsis"
+                                                    contenteditable="false" name="videoId" class="view" data-src="">JHD523DS</section>
+                                            </td>
+                                        
+                                            <td name="createdAt" data-src="">12-12-2023</td>
+                                        
+                                            <td>
+                                                <button href="" class="btn btn-link btn-delete-lesson" data-id="">
+                                                    Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr  class="lesson-item clone">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="hidden" value="" name="lessonId" />
+                                                </div>
+                                            </td>
+            
+                                            <th scope="row"> </th>
+            
+                                            <td class='editing'>
+                                                <section contenteditable="false" name="nameLesson" class="view"> </section>
+                                                <input placeholder="Nhập tên bài học" name="nameLesson" class="edit" />
+                                            </td>
+            
+                                            <td class='editing'>
+                                                <section contenteditable="false" name="description" class="view"> </section>
+                                                <input placeholder="Nhập mô tả bài học" name="description" class="edit" />
+                                            </td>
+            
+                                            <td class='editing'>
+                                                <section contenteditable="false" name="nameLesson" class="view"> </section>
+                                                <input placeholder="Nhập video ID" name="videoId" class="edit" />
+                                            </td>
+            
+                                            <td name="createdAt">12-12-2023</td>
+            
+                                            <td>
+                                                <button class="btn btn-link btn-delete-lesson"
+                                                   data-id=''>
+                                                    Hủy
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+            
+                            <button class="btn btn-primary btn-create-lesson" >+</button>
+                            <button class="btn btn-primary btn-update-lesson">Lưu</button>
+                            <button class="btn btn-primary btn-delete-all-lesson" style="margin-left: 70%;">Xóa tất cả</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+
+            <!-- Footer -->
+            <!-- <footer class="footer">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="col l-3">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sapiente numquam
+                            facere. Obcaecati ad enim hic quidem atque quia distinctio omnis, iste sequi vero
+                            sapiente perferendis consectetur soluta, placeat adipisci.
+                        </h1>
+                    </div>
+                    <div class="col l-2">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quidem distinctio
+                            animi nobis culpa quibusdam assumenda incidunt veniam quae. Debitis velit sunt earum
+                            aliquam ipsam sint odio quisquam soluta obcaecati?
+                        </h1>
+                    </div>
+                    <div class="col l-2">
+                        <h1>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde veritatis mollitia
+                            dolorum nostrum consectetur sapiente quis, excepturi ullam tempora laboriosam dolores
+                            maiores exercitationem iusto pariatur repellat, fugit aspernatur minus reprehenderit!
+                        </h1>
+                    </div>
+                    <div class="col l-2">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a culpa autem doloribus
+                            obcaecati sequi nisi, ratione unde earum? Porro repellendus voluptatem perspiciatis
+                            nesciunt doloribus voluptatum quam omnis dolores molestias?
+                        </h1>
+                    </div>
+                    <div class="col l-3">
+                        <h1>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolores voluptatum dolorum
+                            atque illum officia provident consectetur facere voluptates, alias, cumque,
+                            reprehenderit nobis voluptate voluptatibus corrupti minima. Dolor, provident nulla?
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </footer> -->
+            <div class="footer">
+                <div class="footer_conten">
+                    <div class="row footer_conten--top">
+                        <div class="col c-3">
+                            <div>
+                                <div class="NavBar--logo" style="display: flex;">
+                                    <a href=""><img class="NavBar--logoicon" src="./assets/img/logo/logo-f8.png"
+                                            alt=""></a>
+                                    <h2 class="footer--titleH_logo">Học Lập Trình Để Đi Làm</h2>
+                                </div>
+                                <ul class="footer_wed--infor-list">
+                                    <li>
+                                        <span>Điện thoại: </span>
+                                        <a href="">0246.329.1102</a>
+                                    </li>
+                                    <li>
+                                        <span>Email: </span>
+                                        <a href="">contact@fullstack.edu.vn</a>
+                                    </li>
+                                    <li>
+                                        <span>Địa chỉ: Số 26 Dương Đình Nghệ, Phường Yên Hòa, Quận Cầu Giấy, TP. Hà
+                                            Nội</span>
+                                    </li>
+                                </ul>
+                                <div>
+                                    <a href="">
+                                        <img src="./assets/img/footer/DMCA_protected.png" alt=""
+                                            style="margin-top: 20px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col c-2">
+                            <div class="footer_center">
+                                <div>
+                                    <h2 class="footer_heading">Về F8</h2>
+                                    <ul class="footer_wed--conten-list">
+                                        <li>
+                                            <a href="">Giới thiệu</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Liên hệ</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Điều khoản</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Bảo mật</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Cơ hội việc làm</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col c-2">
+                            <div class="footer_center">
+                                <div>
+                                    <h2 class="footer_heading">Sản phẩm</h2>
+                                    <ul class="footer_wed--conten-list">
+                                        <li>
+                                            <a href="">Game Nester</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Game CSS Diner</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Game CSS Selectors</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Game Froggy</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Game Froggy Pro</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Game Scoops</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col c-2">
+                            <div class="footer_center">
+                                <div>
+                                    <h2 class="footer_heading">Công cụ</h2>
+                                    <ul class="footer_wed--conten-list">
+                                        <li>
+                                            <a href="">Tạo CV xin việc</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Rút gọn liên kết</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Clip-path maker</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Snippet generator</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Cảnh báo sờ tay lên mặt</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col c-3">
+                            <div class="footer_center">
+                                <div>
+                                    <h2 class="footer_heading">CÔNG TY CỔ PHẦN CÔNG NGHỆ GIÁO DỤC F8</h2>
+                                    <ul class="footer_wed--conten-list">
+                                        <li>
+                                            Mã số thuế: 0109922901
+                                        </li>
+                                        <li>
+                                            Ngày thành lập: 04/03/2022
+                                        </li>
+                                        <li>
+                                            Lĩnh vực: Công nghệ, giáo dục, lập trình. F8 xây dựng và phát triển những
+                                            sản phẩm mang
+                                            lại giá trị cho cộng đồng.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row footer_conter--bot">
+                        <div class="col c-12">
+                            <div class="footer--bot_center">
+                                <div class="footer--bot_copyright">
+                                    © 2018 - 2023 F8. Nền tảng học lập trình hàng đầu Việt Nam
+                                </div>
+                                <ul class="footer--bot_list_app--society">
+                                    <li>
+                                        <a href="">
+                                            <i class="fa-brands fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa-brands fa-square-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa-brands fa-tiktok"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./assets/js/Header.js"></script>\
+        <script src="./assets/js/Course.js"></script>
+    </body>
+</htm>
